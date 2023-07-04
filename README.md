@@ -12,7 +12,7 @@ Thank you for your support, interest and for choosing **ClickSound**. <br />
 **Network**   : Not Required </br>
 **AutoStart** : Not Required </br>
 **OS**        : Any linux based os </br>
-**Softwares** : python3, bash 5.*, pip </br>
+**Softwares** : python3, bash 5.*, pip | unzip, sudo, mkdir, ln, mv, chmod</br>
 
 
 # :arrow_double_down: Installation :arrow_double_down:

@@ -32,5 +32,3 @@ sudo ln -s /usr/share/clicksound/main.sh /bin/clicksound
 checkf '/bin/clicksound'
 sudo chmod +x /bin/clicksound
 sudo chmod 777 /bin/clicksound
-
-done
