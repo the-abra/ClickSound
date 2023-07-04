@@ -1,4 +1,4 @@
-# 🔊 Clicksound 👆
+# 🔊 ClickSound 👆
 ![plot]()
 The clicksound is a simple sound effecter for linux based oses, it's playing sounds with every clicking keyboard keys and mouse buttons. Sounds is changable via selecting themes.
 
