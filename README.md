@@ -68,5 +68,5 @@ ToDo
 - [x] create managment panel
      └> commands: stop | start | change | autostart
 - [x] create run check system
-
+- [x] create uninstall
 

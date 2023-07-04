@@ -137,4 +137,16 @@ function autostart() {
   esac
 
 }
-
+function uninstall() {
+  read -e -p "$(echo -ne "Are you sure? (y|N): ")" choose
+  if [[ "$choose" =~ ^(y|Y) ]]; then
+    echo -e "${Red}Deleting...${tp}"
+    [[ -d /usr/share/clicksound ]] && echo -e "Deleting: /usr/share/clicksound" && sudo rm -rf /usr/share/clicksound
+    [[ -f /bin/clicksound ]] && echo -e "Deleting: /bin/clicksound" && sudo rm -rf /bin/clicksound
+    [[ -f /etx/xdg/clicksound.desktop ]] && echo -e "Deleting: /etx/xdg/clicksound.desktop" && sudo rm -rf /etx/xdg/clicksound.desktop 
+    echo -e "${green}Done, system deleted succesfully! (press enter)"
+    read nothing
+  else
+    echo -e "${green}Abroted!${tp}"
+  fi
+}

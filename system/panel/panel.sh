@@ -18,6 +18,8 @@ list="
 [2] ${brown}start sounds${tp}
 [3] ${brown}stop sounds${tp}
 [4] ${brown}auto start${tp}
+[5] ${red}Uninstall${tp}
+
 Enter your choice: ${yellow}"
 
 #set switch case
@@ -28,6 +30,7 @@ case $choice in
     2) startsound ;;
     3) stopsound ;;
     4) autostart ;;
+    5) uninstall ;;
     *) echo "Invalid choice.";;
 esac
 
