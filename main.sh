@@ -1,10 +1,18 @@
 #!/bin/bash
 app_name="clicksound"
 
+#check path
+    if ! [[ -f "/home/$USER/.clicksound.path" ]]; then
+        touch "/home/$USER/.clicksound.path"
+        echo -e "/usr/share/clicksound" > /home/$USER/.clicksound.path 
+    fi
 
-function checkpath () {
+
     if [[ "$(ls $(pwd))" =~ "system" ]]; then
         wpath="$(pwd)"
+    :
+    elif [[ -d "/usr/share/clicksound" ]]; then
+        wpath="/usr/share/clicksound"
     :
     elif [[ "$(ls $(cat /home/$USER/.clicksound.path))" =~ "system" ]]; then
         wpath="$(cat /home/$USER/.clicksound.path)"
@@ -17,7 +25,6 @@ function checkpath () {
                 check="pass"
                 echo -e "[SYSTEM] New path -> $newpath"
                 wpath="$newpath"
-                cd $wpath
                 echo -e "$wpath" > /home/$USER/.clicksound.path
                 :
             else
@@ -27,9 +34,9 @@ function checkpath () {
         done
     :
     fi
-}
+    cd $wpath
 
-checkpath
+
 source system/colors.sh
 
 
@@ -107,7 +114,6 @@ elif [[ "$1" = "themes" ]]; then
 
 :
 elif [[ "$1" = "panel" ]]; then
-    checkpath
     source system/panel/panel.sh
 :
 else

@@ -15,7 +15,7 @@ function checkd() {
 
 
 echo -e "Installing python libs..."
-source system/ReqInstaller.sh 1> /dev/null
+source system/ReqInstaller.sh &> /dev/null
 
 echo -e "Crearting /usr/share/clicksound"
 sudo mkdir /usr/share/clicksound
@@ -32,3 +32,6 @@ sudo ln -s /usr/share/clicksound/main.sh /bin/clicksound
 checkf '/bin/clicksound'
 sudo chmod +x /bin/clicksound
 sudo chmod 777 /bin/clicksound
+
+echo -e "------------------------------------------------------------"
+echo -e "All proccess are done! Now you have type clicksound help to run system."

@@ -1,5 +1,4 @@
 # 🔊 ClickSound 👆
-![plot]()
 The clicksound is a simple sound effecter for linux based oses, it's playing sounds with every clicking keyboard keys and mouse buttons. Sounds is changable via selecting themes.
 
 The features of the ClickSound may be **limited**, **unnecessary**, **inefficient**, **inaccurate** and (or) **incomplete**. If you notify our team in advance of these problems or suggestions, the better for the application. The sooner we know, the sooner **patches**, **improvements** and **updates** will come. <br />
@@ -51,7 +50,7 @@ Loved :two_hearts: the project:question: You can :star2:support:star2: me and my
 <a href="http://www.bynogame.com/tr/destekle/plexus-system" target="_blank"><img src="https://images.bynogame.com/images/anlatim/bynogame-logo-siyah2.png" alt="ByNoGame" height="123" width="300"></a>
 
 # Pictures
-![plot]()
+Uploading...
 
 
 ------------ 
