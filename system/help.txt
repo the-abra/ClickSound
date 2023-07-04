@@ -1,0 +1,6 @@
+    clicksound help   -> display this menu
+    clicksound stop   -> stop sounds
+    clicksound start  -> start sounds
+    clicksound panel  -> open panel
+    clicksound themes -> display installed themes
+    clicksound change -> change sound theme
