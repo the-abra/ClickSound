@@ -20,7 +20,7 @@ just run this commands.
 ```
 wget https://github.com/the-abra/ClickSound/archive/refs/heads/main.zip
 unzip main.zip
-cd ClikSound-main/
+cd ClickSound-main/
 sudo bash .installer.sh
 cd ..
 sudo rm main.zip
