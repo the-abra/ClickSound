@@ -19,11 +19,11 @@ Thank you for your support, interest and for choosing **ClickSound**. <br />
 just run this commands.
 ```
 wget https://github.com/the-abra/ClickSound/archive/refs/heads/main.zip
-unzip ClikSound-main.zip
+unzip main.zip
 cd ClikSound-main/
 sudo bash .installer.sh
 cd ..
-sudo rm ClikSound-main.zip
+sudo rm main.zip
 sudo rm -r ClickSound-main
 echo "Done."
 ```
