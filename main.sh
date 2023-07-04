@@ -6,6 +6,9 @@ app_name="clicksound"
         touch "/home/$USER/.clicksound.path"
         echo -e "/usr/share/clicksound" > /home/$USER/.clicksound.path 
     fi
+    if ! [[ -f "/home/$USER/.clicksound.pid" ]]; then
+        touch "/home/$USER/.clicksound.pid"
+    fi
 
 
     if [[ "$(ls $(pwd))" =~ "system" ]]; then
@@ -99,13 +102,13 @@ elif [[ "$1" = "themes" ]]; then
 
     echo -e "Themes List"
     echo -e "\n${tp}---------------------------------------------"
-    for theme in ${elements[@]}; do
+    for theme_num in ${elements[@]}; do
     let num+=1
     if [[ "$j" = "1" ]]; then
-        write $theme $num && j=0    # right block
+        write $(cat system/sounds/$theme_num/name.file) $num && j=0    # right block
         :
     elif [[ "$j" = "0" ]]; then
-        write_ne $theme $num && j=1 # left block
+        write_ne $(cat system/sounds/$theme_num/name.file) $num && j=1 # left block
         spacer
         :
     fi

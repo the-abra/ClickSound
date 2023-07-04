@@ -65,7 +65,7 @@ ToDo
      └> create runable command clicksound to /bin | install depends
 - [x] create ReqInstaller
 - [] create req checkers
-- [] create managment panel
+- [x] create managment panel
      └> commands: stop | start | change | autostart
 - [x] create run check system
 
