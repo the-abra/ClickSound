@@ -69,4 +69,5 @@ ToDo
      └> commands: stop | start | change | autostart
 - [x] create run check system
 - [x] create uninstall
+- [x] create update system 
 

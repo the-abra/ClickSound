@@ -150,3 +150,38 @@ function uninstall() {
     echo -e "${green}Abroted!${tp}"
   fi
 }
+function checkupdate() {
+  nver="$(curl https://raw.githubusercontent.com/the-abra/ClickSound/main/system/.ver.txt)"
+  cver="$(cat system/.ver)"
+  if [[ "$cver" = "$nver" ]]; then
+    echo -e "[SYSTEM] You are using ${green}latest version${tp} :D"
+  :
+  else
+    echo -e "[SYSTEM] There is a update found ($curv -> $nver)"
+    read -e -p "$(echo -e "Do you want to update? (Y|n)")" choose
+    if [[ "$choose" =~ ^(n|N) ]]; then
+      echo -e "[SYSTEM] Update ${red}Aborted${tp} version: $cver"
+    :
+    else
+      echo -e "${green}Proccess started..."
+      cd /home/$USER/
+      echo -e "${green}Deleting old version..."
+      [[ -d /usr/share/clicksound ]] && echo -e "Deleting: /usr/share/clicksound" && sudo rm -rf /usr/share/clicksound
+      [[ -f /bin/clicksound ]] && echo -e "Deleting: /bin/clicksound" && sudo rm -rf /bin/clicksound
+      [[ -f /etx/xdg/clicksound.desktop ]] && echo -e "Deleting: /etx/xdg/clicksound.desktop" && sudo rm -rf /etx/xdg/clicksound.desktop 
+      echo -e "${green}Done, system deleted succesfully!"
+      echo -e "${green}Installing new version..."
+      wget https://github.com/the-abra/ClickSound/archive/refs/heads/main.zip
+      unzip main.zip
+      cd ClickSound-main/
+      sudo bash .installer.sh
+      cd ..
+      sudo rm main.zip
+      sudo rm -r ClickSound-main
+      echo "Done."
+    :
+    fi
+  :
+  fi
+
+}

@@ -14,13 +14,15 @@ echo -e "
 "
 echo -e "Choose setting menu"
 list="
-[1] ${brown}change theme${tp}
-[2] ${brown}start sounds${tp}
-[3] ${brown}stop sounds${tp}
-[4] ${brown}auto start${tp}
-[5] ${red}Uninstall${tp}
+[x] ${brown}Exit system${tp}
+[1] ${cyan}Change Theme${tp}
+[2] ${cyan}Start Sounds${tp}
+[3] ${cyan}Stop Sounds${tp}
+[4] ${cyan}Auto start${tp}
+[5] ${green}Check Update${tp}
+[6] ${red}Uninstall${tp}
 
-Enter your choice: ${yellow}"
+Enter your choice: ${blue}"
 
 #set switch case
 
@@ -29,8 +31,9 @@ case $choice in
     1) changetheme ;;
     2) startsound ;;
     3) stopsound ;;
-    4) autostart ;;
-    5) uninstall ;;
+    5) checkupdate ;;
+    6) uninstall ;;
+    "x") exit 127 ;;
     *) echo "Invalid choice.";;
 esac
 
