@@ -1,3 +1,4 @@
+echo -ne "${tp}"
 function LifeTime() {
   target_date="2024-07-04"
   today=$(date +%Y-%m-%d)
@@ -151,7 +152,7 @@ function uninstall() {
   fi
 }
 function checkupdate() {
-  nver="$(curl https://raw.githubusercontent.com/the-abra/ClickSound/main/system/.ver.txt)"
+  nver="$(curl https://raw.githubusercontent.com/the-abra/ClickSound/main/system/.ver)"
   cver="$(cat system/.ver)"
   if [[ "$cver" = "$nver" ]]; then
     echo -e "[SYSTEM] You are using ${green}latest version${tp} :D"
