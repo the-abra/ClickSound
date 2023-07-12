@@ -8,7 +8,7 @@ getstatus noecho
 echo -e "
 (_______) |(_)     | |       / _____)                     | | & auth: ${red}the-abra${tp}
  _      | | _  ____| |  _   ( (____   ___  _   _ ____   __| | & repo: ${cyan}ClickSound${tp}
-| |     | || |/ ___) |_/ )   \____ \ / _ \| | | |  _ \ / _  | & vers: ${blue}dev${tp}
+| |     | || |/ ___) |_/ )   \____ \ / _ \| | | |  _ \ / _  | & vers: ${blue}$(cat system/.ver)${tp}
 | |_____| || ( (___|  _ (    _____) ) |_| | |_| | | | ( (_| | & stat: $stat_value
  \______)\_)_|\____)_| \_)  (______/ \___/|____/|_| |_|\____| & LifeTime: $days_diff days left
 "

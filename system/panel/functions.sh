@@ -158,7 +158,7 @@ function checkupdate() {
     echo -e "[SYSTEM] You are using ${green}latest version${tp} :D"
   :
   else
-    echo -e "[SYSTEM] There is a update found ($curv -> $nver)"
+    echo -e "[SYSTEM] There is a update found ($cver -> $nver)"
     read -e -p "$(echo -e "Do you want to update? (Y|n)")" choose
     if [[ "$choose" =~ ^(n|N) ]]; then
       echo -e "[SYSTEM] Update ${red}Aborted${tp} version: $cver"
