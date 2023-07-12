@@ -31,6 +31,7 @@ case $choice in
     1) changetheme ;;
     2) startsound ;;
     3) stopsound ;;
+    4) autostart ;;
     5) checkupdate ;;
     6) uninstall ;;
     "x") exit 127 ;;
