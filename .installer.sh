@@ -14,7 +14,7 @@ function checkd() {
 }
 
 
-echo -e "Installing python libs..."
+echo -e "Installing reqs libs..."
 source system/ReqInstaller.sh &> /dev/null
 
 echo -e "Crearting /usr/share/clicksound"
