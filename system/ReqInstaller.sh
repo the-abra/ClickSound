@@ -1,6 +1,6 @@
 function apti() {
     while ! [[ "$(whereis $1)" =~ "/" ]]; do
-    apti $1 -yq
+    apt install $1 -yq
     done
 }
 
