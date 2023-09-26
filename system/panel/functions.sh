@@ -129,7 +129,7 @@ function autostart() {
       sudo cp clicksound.desktop /etc/xdg/autostart/clicksound.desktop
       ;;
     2)
-      echo -e "Creating autostart file"
+      echo -e "Deleting autostart file"
       sudo rm /etc/xdg/autostart/clicksound.desktop
       ;;
     *)
