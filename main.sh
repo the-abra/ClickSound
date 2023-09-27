@@ -68,6 +68,11 @@ elif [[ "$1" = "stop" ]]; then
     echo -e "Stopping..."
     killpid="$(cat /home/$USER/.clicksound.pid)"
     kill $killpid 2> "$wpath/error.txt"
+    if ! [[ "$(ps -aux | grep $(cat /home/$USER/.clicksound.pid))" =~ "sound.py" ]]; then
+        echo -e "[${brown}SYSTEM${tp}] Status ${red}STOPPED${tp} | ${blue}$(cat /home/$USER/.clicksound.pid)${tp}"
+        echo -e "0000" > /home/$USER/.clicksound.pid
+    :
+    fi
 :
 elif [[ "$1" = "status" ]]; then
     if [[ "$(ps -aux | grep $(cat /home/$USER/.clicksound.pid))" =~ "sound.py" ]]; then
