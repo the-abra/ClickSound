@@ -10,10 +10,12 @@ def gett(file):
 
 theme = gett("theme.txt") + "/"
 
-
-
+pressed_keys = set()
 
 def on_press(key):
+    if key in pressed_keys:
+        return
+    pressed_keys.add(key)
     if key == keyboard.Key.enter:   
         threading.Thread(target=playsound, args=(f"sounds/{theme}enter.wav",)).start()
     elif key == keyboard.Key.backspace:
@@ -25,6 +27,9 @@ def on_press(key):
     else:
         threading.Thread(target=playsound, args=(f"sounds/{theme}generic.wav",)).start()
 
+def on_release(key):
+    pressed_keys.discard(key)
+
 def on_click(x, y, button, pressed):
     if pressed and button == mouse.Button.left:
         threading.Thread(target=playsound, args=(f"sounds/{theme}click_left.wav",)).start()
@@ -32,7 +37,7 @@ def on_click(x, y, button, pressed):
         threading.Thread(target=playsound, args=(f"sounds/{theme}click_right.wav",)).start()
 
 def start_listening():
-    listener = keyboard.Listener(on_press=on_press)
+    listener = keyboard.Listener(on_press=on_press, on_release=on_release)
     listener.start()
 
     mouse_listener = mouse.Listener(on_click=on_click)
@@ -42,4 +47,3 @@ def start_listening():
     mouse_listener.join()
 
 start_listening()
-
