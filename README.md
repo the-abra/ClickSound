@@ -6,7 +6,7 @@ Thank you for your support, interest and for choosing **ClickSound**. <br />
 
 # :computer: System Requirements :computer:
 **Storage**   : 100 mb </br>
-**Ram**       : 512 mb </br>
+**Ram**       : 60 mb </br>
 **Processor** : 2.4 Ghz 2MB cache </br>
 **Network**   : Not Required </br>
 **AutoStart** : Not Required </br>
