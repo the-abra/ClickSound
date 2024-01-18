@@ -50,8 +50,7 @@ Loved :two_hearts: the project:question: You can :star2:support:star2: me and my
 <a href="http://www.bynogame.com/tr/destekle/plexus-system" target="_blank"><img src="https://images.bynogame.com/images/anlatim/bynogame-logo-siyah2.png" alt="ByNoGame" height="123" width="300"></a>
 
 # Pictures
-Uploading...
-
+<img src="https://raw.githubusercontent.com/the-abra/ClickSound/main/system/clicksound.png" alt="ByNoGame"></img>
 
 ------------ 
 Developed by [Abra](https://github.com/the-abra "Abra")
