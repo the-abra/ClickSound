@@ -55,18 +55,4 @@ Loved :two_hearts: the project:question: You can :star2:support:star2: me and my
 ------------ 
 Developed by [Abra](https://github.com/the-abra "Abra")
 ------------
-ToDo
-- [x] create help
-- [x] set life time (1 year)
-- [] create sounds files check system
-     └> files: enter.wav | backspace.wav | delete.wav | space.wav | generic.wav | click_left.wav | click_right.wav
-- [x] create installer
-     └> create runable command clicksound to /bin | install depends
-- [x] create ReqInstaller
-- [] create req checkers
-- [x] create managment panel
-     └> commands: stop | start | change | autostart
-- [x] create run check system
-- [x] create uninstall
-- [x] create update system 
 
