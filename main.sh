@@ -1,13 +1,21 @@
 #!/bin/bash
+
+# Check if the script is run as root
+if [[ "$EUID" -ne 0 ]]; then
+    echo -e "Root access is can't provided."
+    exit 1
+fi
+
+
 app_name="clicksound"
 
 #check path
-    if ! [[ -f "/home/$USER/.clicksound.path" ]]; then
-        touch "/home/$USER/.clicksound.path"
-        echo -e "/usr/share/clicksound" > /home/$USER/.clicksound.path 
+    if ! [[ -f "/root/.clicksound.path" ]]; then
+        touch "/root/.clicksound.path"
+        echo -e "/usr/share/clicksound" > /root/.clicksound.path 
     fi
-    if ! [[ -f "/home/$USER/.clicksound.pid" ]]; then
-        touch "/home/$USER/.clicksound.pid"
+    if ! [[ -f "/root/.clicksound.pid" ]]; then
+        touch "/root/.clicksound.pid"
     fi
 
 
@@ -17,8 +25,8 @@ app_name="clicksound"
     elif [[ -d "/usr/share/clicksound" ]]; then
         wpath="/usr/share/clicksound"
     :
-    elif [[ "$(ls $(cat /home/$USER/.clicksound.path))" =~ "system" ]]; then
-        wpath="$(cat /home/$USER/.clicksound.path)"
+    elif [[ "$(ls $(cat /root/.clicksound.path))" =~ "system" ]]; then
+        wpath="$(cat /root/.clicksound.path)"
     :
     else
         check="none"
@@ -28,7 +36,7 @@ app_name="clicksound"
                 check="pass"
                 echo -e "[SYSTEM] New path -> $newpath"
                 wpath="$newpath"
-                echo -e "$wpath" > /home/$USER/.clicksound.path
+                echo -e "$wpath" > /root/.clicksound.path
                 :
             else
                 echo -e "[SYSTEM] Files not found (false path $newpath)"
@@ -44,14 +52,14 @@ source system/colors.sh
 
 
 function startpy() {
-    if [[ "$(ps -aux | grep $(cat /home/$USER/.clicksound.pid))" =~ "sound.py" ]]; then
-        echo -e "[${brown}SYSTEM${tp}] Status ${green}RUNNING${tp} | ${blue}$(cat /home/$USER/.clicksound.pid)${tp}"
+    if [[ "$(ps -aux | grep $(cat /root/.clicksound.pid))" =~ "sound.py" ]]; then
+        echo -e "[${brown}SYSTEM${tp}] Status ${green}RUNNING${tp} | ${blue}$(cat /root/.clicksound.pid)${tp}"
     :
     else
         cd system/
         python3 sound.py 2> "$wpath/error.txt" &
         soundpy_pid="$!"
-        echo -e "$soundpy_pid" > /home/$USER/.clicksound.pid
+        echo -e "$soundpy_pid" > /root/.clicksound.pid
         cd ..
         echo -e "[${brown}SYSTEM${tp}]: ${green}RUNNING ${tp}| ${blue}$soundpy_pid${tp}"
     :
@@ -66,17 +74,17 @@ if [[ "$1" =~ ^(h|H) ]]; then
 :
 elif [[ "$1" = "stop" ]]; then
     echo -e "Stopping..."
-    killpid="$(cat /home/$USER/.clicksound.pid)"
+    killpid="$(cat /root/.clicksound.pid)"
     kill $killpid 2> "$wpath/error.txt"
-    if ! [[ "$(ps -aux | grep $(cat /home/$USER/.clicksound.pid))" =~ "sound.py" ]]; then
-        echo -e "[${brown}SYSTEM${tp}] Status ${red}STOPPED${tp} | ${blue}$(cat /home/$USER/.clicksound.pid)${tp}"
-        echo -e "0000" > /home/$USER/.clicksound.pid
+    if ! [[ "$(ps -aux | grep $(cat /root/.clicksound.pid))" =~ "sound.py" ]]; then
+        echo -e "[${brown}SYSTEM${tp}] Status ${red}STOPPED${tp} | ${blue}$(cat /root/.clicksound.pid)${tp}"
+        echo -e "0000" > /root/.clicksound.pid
     :
     fi
 :
 elif [[ "$1" = "status" ]]; then
-    if [[ "$(ps -aux | grep $(cat /home/$USER/.clicksound.pid))" =~ "sound.py" ]]; then
-        echo -e "[${brown}SYSTEM${tp}] Status ${green}RUNNING${tp} | ${blue}$(cat /home/$USER/.clicksound.pid)${tp}"
+    if [[ "$(ps -aux | grep $(cat /root/.clicksound.pid))" =~ "sound.py" ]]; then
+        echo -e "[${brown}SYSTEM${tp}] Status ${green}RUNNING${tp} | ${blue}$(cat /root/.clicksound.pid)${tp}"
     :
     else
         echo -e "[${brown}SYSTEM${tp}] Status ${red}Passive${tp} | ${cyan}No keyboard sound active!"
