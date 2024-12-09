@@ -32,7 +32,7 @@ function uninstall() {
 
 function usage() {
     log.setline
-    log.sub "-start / -stop"
-    log.sub "-theme <theme ex. pop>"
-    log.sub "-uninstall"
+    log.sub "start / stop"
+    log.sub "theme <theme ex. pop>"
+    log.sub "uninstall"
 }
