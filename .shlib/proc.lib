@@ -2,9 +2,10 @@
 
 proc.f() {
     local name="$1"
-    for proc_pid in /proc/[0-9]*; do
+    for proc in /proc/[0-9]*; do
         # Check if the full command line matches
-        if grep -q "$name" "$proc_pid/cmdline" 2>/dev/null; then
+        if grep -q "$name" "$proc/cmdline" 2>/dev/null; then
+            proc_pid="$(basename "$proc")"
             return 0  # Process found
         fi
     done
