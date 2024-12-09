@@ -3,6 +3,7 @@
 source .shlib/colors.lib
 source .shlib/logging.lib
 source .shlib/inipars.lib
+source .shlib/proc.lib
 source .shlib/operations.lib
 
 
