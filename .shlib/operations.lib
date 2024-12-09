@@ -6,6 +6,8 @@ function start() {
     [[ $(ps -aux | grep $name | head -n1 | awk '{print $11}') == $name ]] && log.warn "System already active!" && exit 1;
     cd core/
     exec -a $name ./system.run
+    pid=$!
+    log.info "$pid"
 }
 
 function stop() {
