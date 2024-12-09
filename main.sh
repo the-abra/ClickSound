@@ -13,12 +13,10 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 
-while getopts "start:stop:theme:uninstall" opt; do
-  case $opt in
-    start    ) start         ;;
-    stop     ) stop          ;;
-    theme    ) theme $OPTARG ;;
-    uninstall) uninstall     ;;
-    *) usage && exit 1 ;;
-  esac
-done
+case $1 in
+  start    ) start         ;;
+  stop     ) stop          ;;
+  theme    ) theme $2      ;;
+  uninstall) uninstall     ;;
+  *) usage && exit 1 ;;
+esac
