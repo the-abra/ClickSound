@@ -1,0 +1,60 @@
+#!/bin/bash
+#!/bin/bash
+
+# CONF_FILE="config.ini" <- set at parent!
+
+# Function to get a value from a specific section in the .ini file
+inipars.get() {
+  local section="$1"
+  local key="$2"
+
+  if [[ -f "$CONF_FILE" ]]; then
+    awk -v section="[$section]" -v key="$key" \
+      'BEGIN { found_section=0 } \
+      $0 == section { found_section=1; next } \
+      found_section && $0 ~ "^\\[" { exit } \
+      found_section && $0 ~ "^" key "=" { split($0, a, "="); print a[2]; exit }' "$CONF_FILE"
+  else
+    echo "Error: File '$CONF_FILE' does not exist." >&2
+    return 1
+  fi
+}
+
+# Function to update or add a key-value pair in a specific section
+inipars.update() {
+  local section="$1"
+  local key="$2"
+  local value="$3"
+
+  if [[ -f "$CONF_FILE" ]]; then
+    awk -v section="[$section]" -v key="$key" -v value="$value" \
+      'BEGIN { found_section=0; key_updated=0 } \
+      $0 == section { found_section=1; print; next } \
+      found_section && $0 ~ "^\\[" { \
+        if (!key_updated) { print key "=" value; key_updated=1 } \
+        found_section=0 
+      } \
+      found_section && $0 ~ "^" key "=" { print key "=" value; key_updated=1; next } \
+      { print } \
+      END { if (!found_section) { print section; print key "=" value } }' "$CONF_FILE" > "$CONF_FILE.tmp" && mv "$CONF_FILE.tmp" "$CONF_FILE"
+  else
+    echo "Error: File '$CONF_FILE' does not exist." >&2
+    return 1
+  fi
+}
+
+# Example usage
+# Get a value
+function inipars.ex() {
+    echo "Fetching value for 'username' in section 'User':"
+    username=$(inipars_get "User" "username")
+    echo "username=$username"
+
+    # Update a value
+    echo "Updating 'password' in section 'User':"
+    inipars_update "User" "password" "newpassword123"
+
+    # Display the updated file
+    echo "Updated file contents:"
+    cat "$CONF_FILE"
+}

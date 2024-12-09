@@ -1,0 +1,36 @@
+#!/bin/bash
+
+function start() {
+    CONF_FILE="main.conf"
+    name=$(inipars.get "info" "appname")
+    [[ $(ps -aux | grep $name | head -n1 | awk '{print $11}') == $name ]] && log.warn "System already active!" && exit 1;
+    cd core/
+    exec -a $name ./system.run
+}
+
+function stop() {
+    CONF_FILE="main.conf"
+    name=$(inipars.get "info" "appname")
+    ! [[ $(ps -aux | grep $name | head -n1 | awk '{print $11}') == $name ]] && log.warn "System already inactive!" && exit 1;
+    kill $(ps -aux | grep $name | head -n1 | awk '{print $2}')
+}
+
+function theme() {
+    cd core/
+    CONF_FILE="core.conf"
+    ! [[ -f "sounds/$1" ]] && log.error "File not found!" && exit 1;
+    inipars.update "setting" "theme" "$1"
+}
+
+function uninstall() {
+    CONF_FILE="main.conf"
+    rm -rf $(inipars.get "info" "path")
+    ([[ -d "$(inipars.get 'info' 'path')" ]] && log.error "Something went wrong") || log.done "System Uninstalled :("
+}
+
+function usage() {
+    log.setline
+    log.sub "-start / -stop"
+    log.sub "-theme <theme ex. pop>"
+    log.sub "-uninstall"
+}
