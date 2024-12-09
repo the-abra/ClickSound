@@ -2,8 +2,9 @@
 
 source .shlib/colors.lib
 source .shlib/logging.lib
-source .shlib/operations.lib
 source .shlib/inipars.lib
+source .shlib/operations.lib
+
 
 if [[ $EUID -ne 0 ]]; then
   log.error "This script must be run as root." >&2
